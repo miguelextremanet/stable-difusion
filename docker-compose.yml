@@ -1,8 +1,6 @@
-version: "3.8"
-
 services:
   sd:
-    image: ghcr.io/ashawkey/stable-diffusion-webui:latest
+    image: ghcr.io/cmdr2/stable-diffusion-webui-docker:master
     container_name: stable-diffusion
     ports:
       - "7860:7860"
