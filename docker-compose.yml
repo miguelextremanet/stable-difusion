@@ -1,6 +1,6 @@
 services:
   sd:
-    image: ghcr.io/abdeladim88/sd-webui:latest
+    build: .
     container_name: sd
     networks:
       - dokploy-network
