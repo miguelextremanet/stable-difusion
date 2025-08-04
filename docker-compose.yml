@@ -1,9 +1,17 @@
-version: "3.8"
-
 services:
   sd:
-    image: abhinavtankha/stable-diffusion-webui:latest
-    container_name: stable-diffusion
-    ports:
-      - "7860:7860"
+    image: ghcr.io/abdeladim88/sd-webui:latest
+    container_name: sd
+    networks:
+      - dokploy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.sd.rule=Host(`sd.extremanet.eu`)"
+      - "traefik.http.routers.sd.entrypoints=websecure"
+      - "traefik.http.routers.sd.tls.certresolver=letsencrypt"
+      - "traefik.http.services.sd.loadbalancer.server.port=7860"
     restart: unless-stopped
+
+networks:
+  dokploy-network:
+    external: true
