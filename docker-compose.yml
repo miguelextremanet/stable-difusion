@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  sd:
+    image: ghcr.io/ashawkey/stable-diffusion-webui:latest
+    container_name: stable-diffusion
+    ports:
+      - "7860:7860"
+    volumes:
+      - sd-data:/data
+    environment:
+      - CLI_ARGS=--medvram
+    restart: unless-stopped
+
+volumes:
+  sd-data:
